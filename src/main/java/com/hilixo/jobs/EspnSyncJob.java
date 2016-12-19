@@ -14,7 +14,7 @@ public class EspnSyncJob {
     @Autowired
     private GameService gameService;
 
-    @Scheduled(cron = "* * * * * *")
+    @Scheduled(cron = "0 * * * * *")
     public void espnSync() {
 
         gameService.syncGames();
