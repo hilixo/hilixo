@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class HilixoApplication {
 
 	public static void main(String[] args) {
+		fail build
 		SpringApplication.run(HilixoApplication.class, args);
 	}
 }
