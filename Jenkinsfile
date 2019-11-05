@@ -1,3 +1,4 @@
+#!groovy
 library 'jenkins-pipeline-libs@master'
 
 pipeline {
