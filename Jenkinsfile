@@ -4,7 +4,7 @@ library 'jenkins-pipeline-libs@master'
 static def discardPreviousBuilds(currentBuild, branchName, maxDepth = 5) {
     def previousBuild = currentBuild.previousBuild
     if(previousBuild != null && previousBuild.getResult() != null && branchName.startsWith("PR-")) {
-        echo "Sending kill signal to build number: ${prevBuild.number}"
+        echo "Sending kill signal to build number: ${previousBuild.number}"
         previousBuild.rawBuild.doStop()
     }
     if(maxDepth > 0) {
