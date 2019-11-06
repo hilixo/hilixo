@@ -10,7 +10,9 @@ pipeline {
     stage('Check previous builds') {
       steps {
         script {
-          println currentBuild.metaClass.methods.collect { it.name }
+          // println currentBuild.metaClass.methods.collect { it.name }
+          println "Lovro"
+          println currentBuild.previousBuild.previousBuild.metaClass.methods.collect { it.name }
           //def prevBuild = currentBuild.previousBuild
           //if (prevBuild)
           //    echo "Sending kill signal to build number: ${prevBuild.number}"
