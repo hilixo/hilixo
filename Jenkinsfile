@@ -1,6 +1,7 @@
 #!groovy
 library 'jenkins-pipeline-libs@master'
 
+
 pipeline {
 
   agent any
@@ -11,7 +12,8 @@ pipeline {
       steps {
         script {
           // println currentBuild.metaClass.methods.collect { it.name }
-          println "Lovro"
+          println currentBuild.getId()
+          println currentBuild.getChangeSets()
           println currentBuild.previousBuild.previousBuild.metaClass.methods.collect { it.name }
           //def prevBuild = currentBuild.previousBuild
           //if (prevBuild)
