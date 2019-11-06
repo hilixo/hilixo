@@ -3,7 +3,7 @@ library 'jenkins-pipeline-libs@master'
 
 pipeline {
 
-  agent 'master'
+  agent any
   
   stages {
     stage('Build Server Distribution') {
