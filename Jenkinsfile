@@ -13,7 +13,7 @@ pipeline {
         script {
           // println currentBuild.metaClass.methods.collect { it.name }
           println currentBuild.getId()
-          println currentBuild.getChangeSets()
+          println currentBuild.getChangeSets().metaClass.methods.collect { it.name }
           println currentBuild.previousBuild.previousBuild.metaClass.methods.collect { it.name }
           //def prevBuild = currentBuild.previousBuild
           //if (prevBuild)
