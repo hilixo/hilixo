@@ -12,8 +12,8 @@ pipeline {
       steps {
         script {
           // println currentBuild.metaClass.methods.collect { it.name }
-          println currentBuild.getId()
-          println currentBuild.getChangeSets().metaClass.methods.collect { it.name }
+          println env.BRANCH_NAME
+          println currentBuild.getChangeSets().each{ it.getId() }
           println currentBuild.previousBuild.previousBuild.metaClass.methods.collect { it.name }
           //def prevBuild = currentBuild.previousBuild
           //if (prevBuild)
