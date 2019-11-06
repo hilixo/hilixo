@@ -1,6 +1,16 @@
 #!groovy
 library 'jenkins-pipeline-libs@master'
 
+static def discardPreviousBuilds(currentBuild, branchName, maxDepth = 5) {
+    def previousBuild = currentBuild.previousBuild
+    if(previousBuild != null && previousBuild.getResult() != null && branchName.startsWith("PR-")) {
+        echo "Sending kill signal to build number: ${prevBuild.number}"
+        previousBuild.rawBuild.doStop()
+    }
+    if(maxDepth > 0) {
+        discardPreviousBuilds(previousBuild, branchName, maxDepth - 1)
+    }
+}
 
 pipeline {
 
@@ -12,9 +22,7 @@ pipeline {
       steps {
         script {
           // println currentBuild.metaClass.methods.collect { it.name }
-          println env.BRANCH_NAME
-          println currentBuild.getChangeSets().each{ it.getId() }
-          println currentBuild.previousBuild.previousBuild.metaClass.methods.collect { it.name }
+          discardPreviousBuilds(currentBuild, env.BRANCH_NAME)
           //def prevBuild = currentBuild.previousBuild
           //if (prevBuild)
           //    echo "Sending kill signal to build number: ${prevBuild.number}"
